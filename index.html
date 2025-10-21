@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font setup for Inter (used by default with Tailwind, but good to explicitly set) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        /* Style for the filter select element to improve its appearance in dark mode */
+        #genre-filter {
+            background-color: #333333;
+            color: #E0E0E0;
+            border-color: #555555;
+        }
+    </style>
+    <!-- Tailwind Configuration (New Dark Theme Colors) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Existing theme colors
+                        'accent-cyan': '#00F0FF', // Primary theme color (Neon Cyan)
+                        'accent-pink': '#FF005D', // Secondary theme color (Bright Pink/Red)
+                        'dark-bg': '#1A1A1A',
+                        'card-bg': '#282828',
+                        'light-text': '#E0E0E0',
+                        // Added colors for depth/gradients from the external template
+                        'gc-green': '#10B981', 
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-900 text-gray-100 p-4 md:p-8 min-h-screen">
+
+    <!-- Header Section -->
+    <header class="max-w-7xl mx-auto mb-6">
+        <!-- Main title: Games (White font, Pink accent border) -->
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white py-4 
+                   border-b-4 border-accent-pink shadow-xl shadow-pink-900/50">
+            Games
+        </h1>
+
+        <!-- Navigation Tabs -->
+        <nav class="mt-6 flex justify-center space-x-4 md:space-x-8">
+            <!-- Esports Button -->
+            <button id="nav-gamecentric" data-view="gamecentric-view" class="nav-button border-b-2 border-transparent text-gray-400 hover:text-white transition font-bold text-xl md:text-2xl pb-2">
+                Esports
+            </button>
+            <!-- FreeToGame API List Button -->
+            <button id="nav-freetogame" data-view="freetogame-view" class="nav-button border-b-2 border-transparent text-gray-400 hover:text-white transition font-bold text-xl md:text-2xl pb-2">
+                FreeToGame API List
+            </button>
+        </nav>
+    </header>
+
+    <!-- Content Views Container -->
+    <main class="max-w-7xl mx-auto">
+        
+        <!-- 1. Esports View (Mock Content) -->
+        <div id="gamecentric-view" class="hidden relative p-4 sm:p-8 min-h-[600px] overflow-hidden">
+            
+            <!-- Simulated Background Gradients/Blur Effects (from the external page's background) -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute top-10 sm:top-20 left-5 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full blur-2xl sm:blur-3xl"></div>
+                <div class="absolute top-20 sm:top-40 right-5 sm:right-20 w-16 sm:w-24 h-16 sm:h-24 bg-gradient-to-br from-gc-green to-blue-600 rounded-full blur-xl sm:blur-2xl"></div>
+                <div class="absolute bottom-20 sm:bottom-40 left-5 sm:left-20 w-20 sm:w-28 h-20 sm:h-28 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full blur-2xl sm:blur-3xl"></div>
+            </div>
+            
+            <div class="relative z-10 text-center container mx-auto pt-8">
+                <!-- Large Title -->
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 text-white tracking-tight">
+                        Esports
+                    </h2>
+                    <p class="text-gray-400 text-lg">Gaming Reinvented..!</p>
+                </div>
+
+                <!-- Stylized Search Bar Mockup -->
+                <div class="max-w-sm sm:max-w-md mx-auto mb-16">
+                    <div class="relative">
+                        <input type="text" placeholder="Search for a GameCentric original" 
+                            class="w-full h-12 px-4 pr-12 rounded-lg text-white placeholder-gray-400 
+                                   focus:outline-none focus:ring-2 focus:ring-accent-cyan focus:border-transparent 
+                                   transition-all duration-300 text-base bg-gray-800/80 backdrop-blur-sm border border-gray-700" 
+                            value="" disabled/>
+                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white">
+                            <!-- Search Icon (Lucide SVG) -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Cards Grid -->
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Mock Game Card 1 -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl border border-white/20 hover:shadow-white/50 transition duration-300 transform hover:scale-[1.02]">
+                    <h3 class="text-2xl font-extrabold text-white mb-2">Project: Neon Drift</h3>
+                    <p class="text-sm text-gray-400 mb-4">Genre: Cyberpunk Racer | Status: Beta Access</p>
+                    <p class="mt-3 text-gray-300 text-base">Experience zero-G racing through neon-drenched megacities. Unlock custom hulls and specialized boosters to dominate the leagues.</p>
+                </div>
+                <!-- Mock Game Card 2 (Pink Accent) -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl border border-accent-pink/20 hover:shadow-pink-500/50 transition duration-300 transform hover:scale-[1.02]">
+                    <h3 class="text-2xl font-extrabold text-accent-pink mb-2">Realm of the Shadow King</h3>
+                    <p class="text-sm text-gray-400 mb-4">Genre: MMO-RPG | Status: Live</p>
+                    <p class="mt-3 text-gray-300 text-base">A massive, open-world fantasy adventure. Join thousands of players in epic guild wars and deep, challenging dungeon crawls.</p>
+                </div>
+                <!-- Mock Game Card 3 -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl border border-white/20 hover:shadow-white/50 transition duration-300 transform hover:scale-[1.02]">
+                    <h3 class="text-2xl font-extrabold text-white mb-2">Aether Defense</h3>
+                    <p class="text-sm text-gray-400 mb-4">Genre: Tower Defense | Status: Pre-Registration</p>
+                    <p class="mt-3 text-gray-300 text-base">Strategically deploy ancient guardians and customize their abilities to protect the crystal core from endless elemental hordes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. FreeToGame API List View (Existing Content) -->
+        <div id="freetogame-view" class="p-0">
+
+            <!-- Filter Section (Styled for Dark Theme) -->
+            <div class="mb-6 flex justify-center">
+                <div class="bg-card-bg p-4 rounded-xl shadow-md flex items-center space-x-4 border border-neutral-700">
+                    <label for="genre-filter" class="text-light-text font-bold text-lg">Filter by Genre:</label>
+                    <select id="genre-filter" class="p-2 border border-neutral-600 rounded-lg focus:ring-accent-pink focus:border-accent-pink transition duration-150 shadow-sm"></select>
+                </div>
+            </div>
+        
+            <!-- Loading Indicator (Styled for Dark Theme) -->
+            <div id="loading" class="text-center text-xl md:text-2xl text-gray-400 font-medium mt-16 animate-pulse">
+                Loading 🔄 Fetching data from the API...
+            </div>
+
+            <!-- Games List Container (Responsive 2-column grid) -->
+            <ul id="games-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </ul>
+
+            <!-- Pagination Controls Container (MOVED TO BOTTOM) -->
+            <div id="pagination-controls" class="mt-6 flex justify-center space-x-2 text-sm">
+                <!-- Pagination buttons will be inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- CONFIG & DOM Setup ---
+        const ORIGINAL_API_URL = 'https://www.freetogame.com/api/games';
+        // FIX: Switched from corsproxy.io to a more stable public proxy: allorigins.win
+        const API_URL = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(ORIGINAL_API_URL); 
+        const GAMES_PER_PAGE = 25; // MAX 25 games per page as requested
+        
+        const gamesList = document.getElementById('games-list');
+        const loadingIndicator = document.getElementById('loading');
+        
+        // Global state management
+        let allGames = [];
+        let currentFilteredGames = []; // The list after genre filtering
+        let currentPage = 1;
+        let currentPageView = 'freetogame-view';
+
+        // --- Core Application Logic ---
+
+        // Helper function for exponential backoff retry logic
+        async function fetchWithRetry(url, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        // Check if the proxy itself returned a failure status (e.g., 404 from proxy)
+                        if (url.includes('api.allorigins.win') && response.status !== 200) {
+                             throw new Error(`Proxy error or original API inaccessible. Status: ${response.status}`);
+                        }
+                        // This block should ideally handle issues from the original API's response, but often, proxy failure is the cause.
+                        // We will rely on the catch block for actual network errors/timeouts.
+                        throw new Error(`HTTP Error! Status: ${response.status}`);
+                    }
+                    // Special handling for allorigins.win to check for valid JSON data
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        return response;
+                    } else if (contentType && contentType.indexOf("text/html") !== -1) {
+                         // allorigins sometimes returns HTML on failure, which throws a JSON parse error later. 
+                         // Treat this as a proxy failure.
+                         throw new Error("Proxy returned HTML instead of JSON data.");
+                    }
+                    return response; // Return response if it passes checks
+                } catch (error) {
+                    if (i < retries - 1) {
+                        console.warn(`Fetch attempt ${i + 1} failed. Retrying in ${delay / 1000}s...`, error.message);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2; 
+                    } else {
+                        throw error; 
+                    }
+                }
+            }
+        }
+        
+        // --- Pagination Logic Helpers ---
+
+        // Helper to create button elements
+        function createPaginationButton(text, isEnabled, onClick, isCurrent = false) {
+            const button = document.createElement('button');
+            button.textContent = text;
+            button.className = `px-3 py-1 rounded-lg font-semibold transition duration-150 shadow-md ${
+                isEnabled 
+                    ? (isCurrent 
+                        ? 'bg-accent-pink text-white shadow-pink-500/50' 
+                        : 'bg-card-bg text-light-text border border-neutral-700 hover:bg-neutral-700')
+                    : 'bg-neutral-800 text-gray-600 cursor-not-allowed'
+            }`;
+            button.disabled = !isEnabled;
+            if (isEnabled) {
+                button.addEventListener('click', onClick);
+            }
+            return button;
+        }
+
+        // Helper to create span elements for ellipses
+        function createPaginationSpan(text) {
+            const span = document.createElement('span');
+            span.textContent = text;
+            span.className = 'px-1 py-1 text-gray-400';
+            return span;
+        }
+
+        // Updates the pagination controls UI
+        function updatePaginationControls(totalPages) {
+            const controls = document.getElementById('pagination-controls');
+            controls.innerHTML = '';
+            
+            if (totalPages <= 1) return; 
+
+            // --- Previous Button ---
+            const prevButton = createPaginationButton('Prev', currentPage > 1, () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    paginateAndRender(currentFilteredGames);
+                }
+            });
+            controls.appendChild(prevButton);
+
+            // --- Page Number Buttons (Adaptive Display) ---
+            const maxButtonsToShow = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxButtonsToShow / 2));
+            let endPage = Math.min(totalPages, startPage + maxButtonsToShow - 1);
+            
+            if (endPage - startPage + 1 < maxButtonsToShow) {
+                startPage = Math.max(1, endPage - maxButtonsToShow + 1);
+            }
+            
+            // Add first page if not in range
+            if (startPage > 1) {
+                controls.appendChild(createPaginationButton('1', true, () => { currentPage = 1; paginateAndRender(currentFilteredGames); }));
+                if (startPage > 2) {
+                    controls.appendChild(createPaginationSpan('...'));
+                }
+            }
+            
+            // Add middle pages
+            for (let i = startPage; i <= endPage; i++) {
+                const isCurrent = i === currentPage;
+                const button = createPaginationButton(i.toString(), true, () => {
+                    currentPage = i;
+                    paginateAndRender(currentFilteredGames);
+                }, isCurrent);
+                controls.appendChild(button);
+            }
+
+            // Add last page if not in range
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                     controls.appendChild(createPaginationSpan('...'));
+                }
+                controls.appendChild(createPaginationButton(totalPages.toString(), true, () => { currentPage = totalPages; paginateAndRender(currentFilteredGames); }));
+            }
+
+            // --- Next Button ---
+            const nextButton = createPaginationButton('Next', currentPage < totalPages, () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    paginateAndRender(currentFilteredGames);
+                }
+            });
+            controls.appendChild(nextButton);
+        }
+
+        // Slices the array based on the current page and updates controls
+        function paginateAndRender(games) {
+            const totalPages = Math.ceil(games.length / GAMES_PER_PAGE);
+            
+            // Ensure currentPage is valid if filter reduces total pages
+            if (currentPage > totalPages && totalPages > 0) {
+                currentPage = totalPages;
+            } else if (totalPages === 0) {
+                currentPage = 0; // No pages
+            }
+
+            const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
+            const endIndex = startIndex + GAMES_PER_PAGE;
+            
+            const gamesToRender = games.slice(startIndex, endIndex);
+
+            renderGames(gamesToRender);
+            updatePaginationControls(totalPages);
+        }
+
+        // --- Data Handling and Rendering ---
+        
+        // Function to populate the genre filter dropdown
+        function populateGenreFilter(games) {
+            const filterElement = document.getElementById('genre-filter');
+            filterElement.innerHTML = ''; 
+
+            const genres = [...new Set(games.map(game => game.genre))].sort();
+
+            const allOption = document.createElement('option');
+            allOption.value = 'all';
+            allOption.textContent = 'All Genres';
+            filterElement.appendChild(allOption);
+
+            genres.forEach(genre => {
+                const option = document.createElement('option');
+                option.value = genre;
+                option.textContent = genre;
+                filterElement.appendChild(option);
+            });
+            
+            filterElement.addEventListener('change', filterGames);
+        }
+
+        // Function to filter games based on the selected genre
+        function filterGames() {
+            const selectedGenre = document.getElementById('genre-filter').value;
+
+            if (selectedGenre === 'all') {
+                currentFilteredGames = allGames;
+            } else {
+                currentFilteredGames = allGames.filter(game => game.genre === selectedGenre);
+            }
+            
+            // Reset to the first page and render the filtered results
+            currentPage = 1; 
+            paginateAndRender(currentFilteredGames);
+        }
+
+        // Function to render the list items based on the provided array of games
+        function renderGames(gamesToRender) {
+            gamesList.innerHTML = ''; 
+
+            if (gamesToRender.length === 0) {
+                 gamesList.innerHTML = `<li class="md:col-span-2 p-6 bg-card-bg text-accent-pink rounded-xl shadow-lg font-semibold text-center border border-accent-pink/50">
+                                            No games found matching the criteria.
+                                        </li>`;
+                return;
+            }
+
+            gamesToRender.forEach(game => {
+                const listItem = document.createElement('li');
+                
+                // Card styling updated for dark theme
+                listItem.className = `game-item bg-card-bg p-4 rounded-xl shadow-lg border-l-4 border-accent-pink 
+                                      transition duration-300 ease-in-out transform hover:-translate-y-1 
+                                      hover:shadow-xl hover:shadow-pink-500/30 cursor-pointer flex gap-4 items-center`;
+                
+                const fallbackImage = 'https://placehold.co/128x72/333333/E0E0E0?text=NO+IMAGE';
+                
+                // FIX: Updated image proxy to use the new, more stable proxy service
+                const imageProxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(game.thumbnail);
+
+
+                listItem.innerHTML = `
+                    <!-- Game Thumbnail -->
+                    <div class="flex-shrink-0 w-32 h-20 rounded-lg overflow-hidden shadow-md">
+                        <img src="${imageProxyUrl}" 
+                             alt="${game.title} Thumbnail" 
+                             class="w-full h-full object-cover"
+                             onerror="this.onerror=null;this.src='${fallbackImage}';" 
+                        >
+                    </div>
+
+                    <!-- Game Content -->
+                    <div class="flex-grow">
+                        <!-- Game Title -->
+                        <a href="${game.game_url}" target="_blank" rel="noopener noreferrer" class="block">
+                            <!-- FONT COLOR: White -->
+                            <div class="game-title font-extrabold text-xl lg:text-2xl text-white hover:text-gray-400 transition duration-150">
+                                ${game.title}
+                            </div>
+                        </a>
+                        
+                        <!-- Short Description - Hidden on small screens, shown on large for the 2-column layout -->
+                        <p class="text-gray-400 mt-1 text-base leading-snug hidden lg:block">${game.short_description}</p>
+                        
+                        <!-- Metadata Tags -->
+                        <div class="flex flex-wrap gap-1 mt-3 text-sm">
+                            <span class="bg-neutral-700 text-light-text px-3 py-1 rounded-full font-medium">
+                                Genre: ${game.genre}
+                            </span>
+                            <span class="bg-accent-pink text-white px-3 py-1 rounded-full font-medium">
+                                Platform: ${game.platform}
+                            </span>
+                            <span class="bg-white/10 text-white px-3 py-1 rounded-full font-medium hidden xl:inline-block">
+                                Publisher: ${game.publisher || 'N/A'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                gamesList.appendChild(listItem);
+            });
+        }
+
+        // Main function to fetch data and initialize the application
+        async function loadGames() {
+            if (allGames.length > 0) return; 
+
+            loadingIndicator.style.display = 'block';
+
+            try {
+                const response = await fetchWithRetry(API_URL);
+                const games = await response.json();
+                
+                allGames = games; 
+                loadingIndicator.style.display = 'none';
+
+                if (!Array.isArray(allGames) || allGames.length === 0) {
+                    gamesList.innerHTML = `<li class="p-6 bg-red-900/50 text-accent-pink rounded-xl shadow-md font-semibold md:col-span-2">
+                                            No games found or unexpected response format.
+                                        </li>`;
+                    return;
+                }
+
+                populateGenreFilter(allGames);
+                // Initial render: filter all games (which results in allGames being the filtered list)
+                filterGames(); 
+
+            } catch (error) {
+                console.error('API Load Error:', error);
+                
+                loadingIndicator.classList.remove('animate-pulse');
+                loadingIndicator.classList.add('p-6', 'bg-red-900/50', 'text-accent-pink', 'rounded-xl', 'shadow-md', 'max-w-xl', 'mx-auto', 'md:col-span-2');
+                loadingIndicator.textContent = `❌ Failed to load games! Error: ${error.message}. Please check your connection or try again later.`;
+            }
+        }
+
+        // --- Event Listeners and Initial Load ---
+        
+        // Function to manage view switching
+        function showView(viewId) {
+            document.getElementById('gamecentric-view').classList.add('hidden');
+            document.getElementById('freetogame-view').classList.add('hidden');
+            
+            document.getElementById(viewId).classList.remove('hidden');
+
+            // Update navigation styles
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                // CLEANUP: Removes previous active styles
+                btn.classList.remove('border-accent-pink', 'text-white', 'border-b-4'); 
+                btn.classList.add('border-transparent', 'text-gray-400', 'border-b-2');
+            });
+
+            const activeBtn = document.querySelector(`[data-view="${viewId}"]`);
+            if (activeBtn) {
+                // APPLY: Uses pink border accent and white text
+                activeBtn.classList.remove('border-transparent', 'text-gray-400', 'border-b-2');
+                activeBtn.classList.add('border-accent-pink', 'text-white', 'border-b-4');
+            }
+            currentPageView = viewId;
+        }
+
+        // Add event listeners to navigation buttons
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const viewId = e.target.dataset.view;
+                showView(viewId);
+                // Pre-load data when switching to the FreeToGame view if not already loaded
+                if (viewId === 'freetogame-view' && allGames.length === 0) {
+                    loadGames();
+                }
+            });
+        });
+
+        // Initial setup on load
+        window.onload = () => {
+             // Start on the FreeToGame tab and load the data
+             showView('freetogame-view');
+             loadGames();
+        };
+    </script>
+
+</body>
+</html>
